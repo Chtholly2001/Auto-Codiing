@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "苹果17",
+    "price": 5999.0,
+    "stock": 122,
+    "description": "苹果"
+  },
+  {
+    "id": 2,
+    "name": "华为mate27",
+    "price": 5999.9,
+    "stock": 90,
+    "description": "测试python"
+  },
+  {
+    "id": 3,
+    "name": "衣服",
+    "price": 123.0,
+    "stock": 121,
+    "description": "123"
+  }
+]

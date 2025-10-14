@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1>欢迎来到电商管理系统</h1>
+        <p class="lead">这是一个简单的电商管理系统，支持管理员和普通用户两种角色。</p>
+        
+        {% if not current_user.is_authenticated %}
+        <div class="alert alert-info">
+            <h4>请先登录或注册</h4>
+            <p>普通用户可以管理自己的商品，管理员可以管理所有商品和用户。</p>
+            <div class="mt-3">
+                <a href="{{ url_for('login') }}" class="btn btn-primary">登录</a>
+                <a href="{{ url_for('register') }}" class="btn btn-outline-primary">注册</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <h2>商品列表</h2>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p class="card-text">
+                            <strong>价格: ￥{{ "%.2f"|format(product.price) }}</strong><br>
+                            <strong>库存: {{ product.stock }}</strong>
+                        </p>
+                        <small class="text-muted">创建者: {{ product.user.username }}</small>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12">
+                <div class="alert alert-warning">暂无商品</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
