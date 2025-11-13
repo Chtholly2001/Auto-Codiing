@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}商品管理 - 电商管理系统{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">商品管理</h1>
+    {% if session.role == 'admin' %}
+    <a href="{{ url_for('add_product') }}" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> 添加商品
+    </a>
+    {% endif %}
+</div>
+
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text text-muted">{{ product.description }}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>价格：</strong>¥{{ "%.2f"|format(product.price) }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>库存：</strong>{{ product.stock }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>分类：</strong>{{ product.category }}
+                    </li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                {% if session.role == 'admin' %}
+                <div class="btn-group w-100">
+                    <a href="{{ url_for('edit_product', product_id=product.id) }}" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-pencil"></i> 编辑
+                    </a>
+                    <a href="{{ url_for('delete_product', product_id=product.id) }}" class="btn btn-outline-danger btn-sm" onclick="return confirm('确定要删除这个商品吗？')">
+                        <i class="bi bi-trash"></i> 删除
+                    </a>
+                </div>
+                {% else %}
+                <div class="d-flex flex-column gap-2">
+                    <div class="btn-group w-100">
+                        <a href="{{ url_for('buy_product', product_id=product.id) }}" class="btn btn-primary btn-sm flex-fill">
+                            <i class="bi bi-cart"></i> 立即购买
+                        </a>
+                    </div>
+                    <form method="POST" action="{{ url_for('add_to_cart', product_id=product.id) }}" class="d-flex gap-1">
+                        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+                        <input type="number" name="quantity" value="1" min="1" max="{{ product.stock }}" 
+                               class="form-control form-control-sm" style="width: 70px;">
+                        <button type="submit" class="btn btn-outline-success btn-sm flex-fill">
+                            <i class="bi bi-cart-plus"></i> 加入购物车
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12">
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i> 暂无商品信息
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

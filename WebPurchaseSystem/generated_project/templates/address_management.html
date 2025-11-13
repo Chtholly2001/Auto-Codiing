@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地址管理 - 电商管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 600px;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">电商管理系统</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="{{ url_for('index') }}">首页</a>
+                <a class="nav-link" href="{{ url_for('products') }}">商品列表</a>
+                <a class="nav-link" href="{{ url_for('orders') }}">我的订单</a>
+                <a class="nav-link active" href="{{ url_for('address_management') }}">地址管理</a>
+                <a class="nav-link" href="{{ url_for('recharge') }}">充值</a>
+                {% if session.get('role') == 'admin' %}
+                <a class="nav-link" href="{{ url_for('user_management') }}">用户管理</a>
+                {% endif %}
+                <a class="nav-link" href="{{ url_for('logout') }}">退出</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h2>地址管理</h2>
+                
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="province" class="form-label">省份</label>
+                                        <input type="text" class="form-control" id="province" name="province" 
+                                               value="{{ address.get('province', '') }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="city" class="form-label">城市</label>
+                                        <input type="text" class="form-control" id="city" name="city" 
+                                               value="{{ address.get('city', '') }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="district" class="form-label">区县</label>
+                                        <input type="text" class="form-control" id="district" name="district" 
+                                               value="{{ address.get('district', '') }}" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="detail" class="form-label">详细地址</label>
+                                <textarea class="form-control" id="detail" name="detail" rows="3" required>{{ address.get('detail', '') }}</textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">手机号</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" 
+                                       value="{{ address.get('phone', '') }}" pattern="[0-9]{11}" required>
+                                <div class="form-text">请输入11位手机号码</div>
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">保存地址</button>
+                                <a href="{{ url_for('index') }}" class="btn btn-secondary">返回首页</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                {% if address.get('province') %}
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">当前地址信息</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>收货地址：</strong>{{ address.get('province', '') }} {{ address.get('city', '') }} {{ address.get('district', '') }} {{ address.get('detail', '') }}</p>
+                        <p><strong>联系电话：</strong>{{ address.get('phone', '') }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

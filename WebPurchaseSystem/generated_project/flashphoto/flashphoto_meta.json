@@ -1,0 +1,109 @@
+{
+  "generated_at": "",
+  "files": {
+    "README.md": {
+      "path": "README.md",
+      "summary": "这是一个基于Flask框架开发的用户登录注册系统，主要提供用户注册、登录、会话管理和简单用户界面功能。核心文件是app.py，包含Flask应用实例和路由处理逻辑。关键组件包括用户认证模块和会话管理器。系统依赖requirements.txt中列出的Python包，可通过run.sh脚本或直接运行app.py启动。访问localhost:5000后，用户可进行注册和登录操作，成功登录后显示欢迎页面。"
+    },
+    "app.py": {
+      "path": "app.py",
+      "summary": "app.py 是一个基于 Flask 的 Web 应用主文件，主要功能是构建一个电商系统，包括用户认证、商品管理、订单处理和账户充值等功能。\n\n重要的组件包括 Flask 应用实例和 DatabaseManager 数据库管理器。关键路由有首页 (/)、用户登录/注册 (/login, /register)、商品管理 (/products, /products/add 等)、购买商品 (/buy/<product_id>)、账户充值 (/recharge) 和订单查看 (/orders)。\n\n应用使用 session 管理用户状态，存储 user_id、username、role 和 csrf_token 等关键变量。配置包括设置 secret_key 和启用调试模式。\n\n该文件与多个模块有关联：从 security 导入密码哈希和权限验证装饰器，从 database 导入 DatabaseManager 进行数据操作，从 forms 导入各种表单类。它还依赖 templates 目录下的 HTML 模板文件来渲染页面。"
+    },
+    "config.py": {
+      "path": "config.py",
+      "summary": "该配置文件用于设置Flask应用的核心参数。主要功能是管理应用的安全密钥和数据库连接配置，支持从环境变量读取或使用默认值。\n\n重要的类是Config，它包含应用的关键配置属性。主要配置项包括SECRET_KEY（用于会话安全）和SQLALCHEMY_DATABASE_URI（数据库连接字符串），均支持环境变量配置。SQLALCHEMY_TRACK_MODIFICATIONS被显式禁用以避免性能开销。\n\n该文件通常被主应用文件导入，为Flask应用实例提供配置基础，并与数据库操作模块协同工作，确保整个应用能够安全、正确地访问数据库资源。"
+    },
+    "database.py": {
+      "path": "database.py",
+      "summary": "该文件实现了一个基于JSON文件的轻量级数据库管理系统，主要功能是统一管理用户、商品和订单数据。核心组件是DatabaseManager类，提供数据读写、用户管理、商品管理和订单管理等功能。关键配置包括三个数据文件路径（users.json、products.json、orders.json），使用线程锁确保数据一致性。该类通过封装JSON文件的读写操作，为其他模块提供数据持久化服务，作为整个应用的数据存储层，与业务逻辑模块进行交互。全局实例db便于其他文件直接调用数据库操作。"
+    },
+    "forms.py": {
+      "path": "forms.py",
+      "summary": "该文件是Flask Web应用的表单定义文件，使用Flask-WTF和WTForms构建各类用户输入表单。主要功能包括用户认证、商品管理、交易处理和地址管理。\n\n包含6个核心表单类：LoginForm（登录）、RegisterForm（注册，含用户名格式验证）、ProductForm（商品信息）、RechargeForm（充值）、AddressForm（地址，含手机号验证）和BuyProductForm（购买商品）。\n\n关键字段包括用户名、密码、价格、库存、分类选择、地址信息和支付方式等，均配置了数据验证规则（DataRequired、Length、NumberRange等）。重要变量包括各类字段的验证参数和分类选项配置。\n\n该文件与应用的视图层紧密配合，为用户注册、登录、商品添加、交易处理等业务逻辑提供数据验证和表单渲染支持，确保输入数据的有效性和安全性。"
+    },
+    "orders.json": {
+      "path": "orders.json",
+      "summary": "该文件是一个订单数据存储文件，主要功能是记录和管理电商系统中的订单信息。它存储了完整的订单数据，包括订单ID、用户ID、商品详情、数量、总价和状态等关键信息。\n\n重要的数据结构包括订单对象，包含id、user_id、product_id、product_name、quantity、total_price、status、created_at和updated_at等字段。其中status字段表示订单处理状态，created_at和updated_at记录时间戳。\n\n关键的配置包括订单金额使用浮点数格式，时间戳采用ISO 8601标准格式。该文件作为数据持久化层，与用户管理、商品库存和支付系统等模块存在关联关系，为整个电商系统提供订单数据支持。"
+    },
+    "products.json": {
+      "path": "products.json",
+      "summary": "该文件是一个JSON格式的产品数据存储文件，主要功能是作为应用程序的产品信息数据库，用于存储和管理商品数据。文件包含一个产品对象数组，每个对象代表一件商品，包含关键字段如：唯一标识`id`、产品名称`name`、价格`price`、库存数量`stock`、描述`description`和分类`category`。部分新产品记录还包含`created_at`时间戳字段。该数据文件通常被应用程序的后端服务或前端界面读取，用于商品展示、库存管理和订单处理等核心业务流程，与用户界面、购物车系统和订单处理模块存在紧密的数据交互关系。"
+    },
+    "requirements.txt": {
+      "path": "requirements.txt",
+      "summary": "该文件是Python项目的依赖配置文件，用于声明项目运行所需的第三方库及其特定版本。\n\n主要功能是确保项目环境的一致性，通过列出所有必要的包和精确版本号，方便使用pip等工具进行一键安装。\n\n文件包含两个核心依赖：Flask==2.3.3（轻量级Web框架）和Werkzeug==2.3.7（WSGI工具库）。这两个包版本严格匹配，Flask依赖Werkzeug，这种精确锁定避免了版本冲突。\n\n该文件通常被部署工具和持续集成系统读取，用于构建项目运行环境。它与项目的其他代码文件形成依赖关系，确保应用程序具备所需的运行库支持。"
+    },
+    "security.py": {
+      "path": "security.py",
+      "summary": "该文件是Flask应用的安全模块，提供用户认证和输入验证功能。主要包含密码加密验证、CSRF防护、输入清理和权限控制等功能。重要组件包括：hash_password()和verify_password()使用bcrypt处理密码；generate_csrf_token()生成CSRF令牌；validate_input()和sanitize_html()清理用户输入；三个权限装饰器require_login、require_admin和require_user分别验证登录状态和管理员权限。关键变量涉及session中的user_id和role，以及CSRF令牌。该模块依赖Flask的session、request等对象，为其他路由文件提供安全保护，通常被视图函数导入使用。"
+    },
+    "static/css/style.css": {
+      "path": "static/css/style.css",
+      "summary": "该CSS文件为Web应用提供全局样式定义，主要功能是构建响应式、美观的用户界面。核心组件包括：.container类实现居中布局和卡片效果；.form-group、label和input系列样式构建表单控件；.save-btn、.cancel-btn等按钮样式定义交互元素；table系列样式创建数据表格。关键配置包括1200px最大宽度、色彩方案(#4CAF50等)和盒阴影效果。该样式文件作为基础样式层，被所有HTML页面引用，确保整个应用保持统一的视觉风格和交互体验。"
+    },
+    "templates/add_product.html": {
+      "path": "templates/add_product.html",
+      "summary": "该文件是一个商品管理系统的添加商品页面模板，主要功能是提供表单界面用于录入新商品信息。页面包含商品名称、价格、库存、分类和描述等必填和选填字段，使用Bootstrap框架实现响应式布局。\n\n重要组件包括商品信息表单容器、消息提示系统和操作按钮组。关键的表单字段有name（商品名称）、price（价格）、stock（库存）、category（分类下拉框）和description（商品描述）。页面通过Flask模板语法集成后端消息提示功能，使用get_flashed_messages显示操作反馈。\n\n该模板与后端products路由关联，表单提交后由对应的Flask视图函数处理数据存储，取消按钮则跳转回商品列表页面。页面样式采用自定义CSS结合Bootstrap，确保界面美观统一。"
+    },
+    "templates/address_management.html": {
+      "path": "templates/address_management.html",
+      "summary": "该文件是电商管理系统的地址管理页面模板，主要用于用户管理收货地址信息。页面包含导航栏和地址表单两大核心组件，通过POST方法提交省份、城市、区县、详细地址和手机号等关键信息。表单字段使用Bootstrap样式进行布局，包含省份、城市、区县的并排三列输入框，以及详细地址的文本域和手机号输入框。页面通过Jinja2模板引擎动态显示当前地址信息，并集成消息提示功能。该模板与Flask后端路由紧密关联，通过url_for方法链接到首页、商品列表、订单管理等多个功能模块，是用户个人中心的重要组成部分。"
+    },
+    "templates/base.html": {
+      "path": "templates/base.html",
+      "summary": "该文件是电商管理系统的HTML基础模板，定义了网站的整体布局和通用结构。主要功能包括提供响应式页面框架、导航栏、侧边栏和内容区域，并集成Bootstrap样式。\n\n重要组件包含导航栏（显示用户登录状态和角色）、条件渲染的侧边栏（根据用户权限显示不同菜单项）和主内容区。关键变量使用Jinja2模板语法，包括`{% block title %}`、`{% block content %}`和`{% block scripts %}`等可扩展块，以及`session.user_id`、`session.role`用于权限控制。\n\n文件通过`url_for()`函数引用多个路由端点（如index、products、login等），并包含闪存消息显示机制。作为基础模板，其他页面模板通过继承该文件并重定义内容块来保持界面一致性。"
+    },
+    "templates/buy_product.html": {
+      "path": "templates/buy_product.html",
+      "summary": "该文件是电商管理系统的商品购买页面模板，主要功能是展示商品详情并处理用户购买操作。页面使用Bootstrap框架构建响应式布局，包含导航栏、商品信息展示区和购买表单。\n\n重要组件包括导航栏（链接到首页、商品列表、订单等页面）、商品信息展示区（显示商品图片、名称、描述、价格和库存）和购买表单（包含数量输入和总价计算）。关键变量包括product对象（包含商品详细信息）、session.csrf_token（用于CSRF保护）和quantity（用户输入的购买数量）。\n\n页面通过Jinja2模板引擎与后端交互，使用url_for()函数生成路由链接，依赖products路由提供商品数据。JavaScript脚本实现了实时总价计算功能，根据用户输入的数量动态更新总价显示。该模板与商品列表页面和订单处理功能紧密关联，构成完整的购买流程。"
+    },
+    "templates/edit_product.html": {
+      "path": "templates/edit_product.html",
+      "summary": "该文件是一个商品编辑页面的HTML模板，主要用于修改现有商品信息。页面包含商品名称、价格、库存、分类和描述等表单字段，通过POST方法提交数据。重要组件包括使用Bootstrap框架的响应式布局容器、表单验证和消息闪现功能。关键变量包括product对象（包含name、price、stock、category、description等属性）和表单字段的预填充值。该模板与后端Flask应用紧密关联，通过Jinja2模板语法动态渲染数据，依赖products路由进行页面跳转，并与商品管理系统的其他模板共同构成完整的商品CRUD功能。"
+    },
+    "templates/edit_profile.html": {
+      "path": "templates/edit_profile.html",
+      "summary": "该文件是电商管理系统的用户个人资料编辑页面模板，主要功能是提供用户信息修改界面。页面继承自base.html模板，包含用户名显示、余额展示和收货地址编辑表单。重要组件包括用户信息展示区域和地址编辑表单，关键变量有user对象（包含用户名、余额和地址信息）和CSRF令牌。该模板通过POST请求与edit_profile路由交互，使用url_for函数关联其他视图函数，并与profile页面形成导航关系。"
+    },
+    "templates/index.html": {
+      "path": "templates/index.html",
+      "summary": "该文件是电商管理系统的首页模板，主要功能是展示系统概览和提供快速操作入口。它继承自base.html模板，包含统计卡片显示商品总数、用户总数和账户余额等关键数据。重要组件包括三个统计卡片和快速操作按钮区域，使用Bootstrap进行页面布局。关键变量包括total_products、total_users、user_balance和session中的用户信息。该页面通过url_for函数链接到products、user_management、add_product、recharge等其他功能页面，并根据用户角色（管理员或普通用户）动态显示不同的操作权限。"
+    },
+    "templates/login.html": {
+      "path": "templates/login.html",
+      "summary": "该文件是电商管理系统的用户登录页面模板，主要功能是提供用户身份验证界面。页面继承自base.html模板，使用Bootstrap框架构建响应式布局。核心组件包括登录表单，包含用户名和密码输入字段，表单通过POST方法提交到login路由。关键变量包括CSRF令牌用于安全验证，以及注册页面的跳转链接。该模板与base.html存在继承关系，与后端的login和register路由相关联，共同构成用户认证流程的前端界面。"
+    },
+    "templates/order_detail.html": {
+      "path": "templates/order_detail.html",
+      "summary": "该文件是电商管理系统的订单详情页面模板，用于展示单个订单的详细信息。主要功能包括显示订单号、商品名称、购买数量、总价、下单时间和订单状态等关键信息。\n\n页面使用Bootstrap框架构建响应式布局，包含导航栏和订单详情区域。重要的样式类包括order-detail（订单详情容器）、order-id（订单号样式）、total-price（总价样式）和status（状态标签样式）。关键变量通过Jinja2模板引擎从后端传入，包括order对象的id、product_name、quantity、total_price、created_at和status属性。\n\n该模板与Flask后端路由紧密关联，通过url_for函数调用index、products、orders、profile和logout等路由。页面通过订单状态动态设置CSS类（status-pending或status-completed），实现不同状态的可视化区分。返回按钮链接到订单列表页面，保持页面间的导航连贯性。"
+    },
+    "templates/orders.html": {
+      "path": "templates/orders.html",
+      "summary": "该文件是电商管理系统的订单展示页面，主要功能是显示用户的订单列表信息。页面使用Bootstrap框架构建响应式布局，包含导航栏和订单内容区域。\n\n重要组件包括导航栏和订单列表容器。导航栏提供系统各模块的跳转链接，订单区域通过Jinja2模板语法动态渲染订单数据。关键样式类定义了订单卡片、状态标签和按钮的视觉效果。\n\n页面使用orders变量接收后端传递的订单数据，每个订单对象包含id、product_name、quantity、total_price、created_at和status等关键字段。状态通过CSS类status-pending和status-completed区分显示。\n\n该模板与Flask后端路由紧密关联，通过url_for函数调用index、products、orders、profile、logout和order_detail等路由实现页面跳转，是用户查看和管理订单的前端界面。"
+    },
+    "templates/products.html": {
+      "path": "templates/products.html",
+      "summary": "该文件是电商管理系统的商品管理页面模板，继承自base.html基础模板。主要功能是展示商品列表并提供管理操作，根据用户角色显示不同的功能按钮。\n\n页面包含商品展示卡片布局，显示商品名称、描述、价格、库存和分类信息。关键组件包括添加商品按钮（仅管理员可见）、商品编辑/删除功能（管理员）和购买功能（普通用户）。\n\n重要变量包括products商品列表、session.role用户角色。通过url_for调用后端路由：add_product、edit_product、delete_product和buy_product。\n\n该模板依赖于base.html提供页面框架，与后端Python文件通过Jinja2模板变量交互，根据用户权限动态渲染不同操作界面。"
+    },
+    "templates/profile.html": {
+      "path": "templates/profile.html",
+      "summary": "该文件是电商管理系统的个人资料页面模板，主要用于展示和管理用户个人信息。页面采用Bootstrap框架构建响应式布局，包含导航栏、侧边菜单和个人资料展示区。\n\n重要组件包括导航栏、用户菜单卡片和个人资料卡片。关键变量通过Jinja2模板注入，包括用户对象(user)和会话信息(session)，其中user对象包含用户名、ID、角色、余额和地址信息，session用于判断用户角色以显示管理员功能。\n\n页面通过url_for函数与其他路由关联，包括首页、商品列表、订单管理、账户充量和编辑资料等功能页面。侧边菜单根据用户角色动态显示用户管理入口，个人资料区域展示基本信息和收货地址，并提供快速操作按钮跳转到相关功能页面。"
+    },
+    "templates/recharge.html": {
+      "path": "templates/recharge.html",
+      "summary": "该文件是一个用户充值页面模板，主要功能是提供用户充值金额的表单界面。页面使用Bootstrap框架构建响应式布局，包含充值金额输入表单和操作按钮。重要组件包括充值表单、错误提示区域和导航按钮。关键变量包括amount（充值金额）和error（错误信息）。该模板通过Jinja2模板引擎与后端交互，接收错误信息并动态显示，同时通过url_for('products')与商品管理页面建立关联。页面布局采用卡片式设计，确保在不同设备上都能正常显示。"
+    },
+    "templates/register.html": {
+      "path": "templates/register.html",
+      "summary": "该文件是电商管理系统的用户注册页面模板，主要功能是提供用户注册界面并处理注册表单提交。页面继承自base.html模板，包含用户名、密码和确认密码三个必填字段，通过POST方法提交到register路由。关键组件包括CSRF令牌隐藏字段用于安全验证，以及Bootstrap样式的卡片布局和表单控件。页面通过url_for函数与后端的register和login路由关联，实现了用户注册和登录页面的跳转功能。"
+    },
+    "templates/user_management.html": {
+      "path": "templates/user_management.html",
+      "summary": "该文件是电商管理系统的用户管理界面模板，主要功能是显示用户列表并提供角色修改和删除操作。页面使用Bootstrap框架构建，包含导航栏和用户信息表格。重要组件包括用户角色徽章（admin-badge/user-badge）和操作按钮组。关键变量包括session中的用户身份信息、users用户列表数据。页面通过JavaScript函数deleteUser和updateRole调用后端API接口实现用户管理功能。该模板与后端Flask路由相关联，通过url_for引用其他页面（商品管理、退出等），是管理员权限下的专用功能模块。"
+    },
+    "users.json": {
+      "path": "users.json",
+      "summary": "该文件是一个JSON格式的用户数据存储文件，主要功能是保存系统用户的基本信息，用于用户认证、权限管理和个人资料管理。文件包含用户数组，每个用户对象具有id、username、password、balance、role和address等关键字段。其中password字段存储加密后的密码，role字段区分用户角色（admin/user），balance记录用户余额，address对象包含省份、城市、区域、详细地址和电话等子字段。该文件通常被系统的主应用程序或认证模块读取和更新，用于用户登录验证、权限控制和用户信息展示，与其他模块如认证服务、用户管理界面和订单系统存在数据依赖关系。"
+    }
+  }
+}

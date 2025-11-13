@@ -5,7 +5,183 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd6beb93-33e6-4dab-8e6e-7e55d50bddf8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/APIexplorer/api_exposer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/APIexplorer/interactive_usage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/Chat20251101.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/code_analyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/code_updater.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/generate_project新.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/generated_project/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/generated_project/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/generated_project/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/generated_project/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/generated_project/static/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/generated_project/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/generated_project/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/generated_project/需求文档.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/prompts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/utils/api_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/utils/file_operations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/截断生成原理.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/最多一次生成十个文件，多了需要bug里给出，文件再多就无法精确定位，这是目前的产品上限，详见通义灵码聊天记录.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/聊天.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BilibiliVideoSystem/聊天py使用说明.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/APIexplorer/api_exposer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/APIexplorer/interactive_usage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/Chat20251101.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/code_analyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/code_updater.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/generate_project新.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/prompts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/utils/api_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/utils/file_operations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/截断生成原理.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/最多一次生成十个文件，多了需要bug里给出，文件再多就无法精确定位，这是目前的产品上限，详见通义灵码聊天记录.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/聊天.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewProject/聊天py使用说明.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/APIexplorer/api_exposer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/APIexplorer/interactive_usage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/Chat20251101.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/code_analyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/code_updater.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/generate_project新.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/generated_project/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/generated_project/backend/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/generated_project/backend/database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/generated_project/backend/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/generated_project/backend/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/generated_project/frontend/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/generated_project/frontend/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/generated_project/frontend/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/generated_project/需求文档.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/prompts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/utils/api_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/utils/file_operations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/截断生成原理.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/最多一次生成十个文件，多了需要bug里给出，文件再多就无法精确定位，这是目前的产品上限，详见通义灵码聊天记录.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/聊天.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDoList/聊天py使用说明.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/APIexplorer/api_exposer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/APIexplorer/interactive_usage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/Chat20251101.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/code_analyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/code_updater.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generate_project新.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/.incomplete/app.py.part.1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/.incomplete/app.py.part.2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/.incomplete/app.py.part.3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/.incomplete/app.py.part.4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/.incomplete/app.py.part.5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/.incomplete/app.py.part.6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/DEBUG2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/carts.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/flashphoto/flashphoto_meta.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/flashphoto/flashphoto_snapshot.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/instance/ecommerce.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/orders.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/products.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/security.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/shop_balance.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/shortener.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/address_management.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/admin_orders.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/buy_product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/cart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/edit_profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/order_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/orders.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/products.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/user_management.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/users.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/功能文档.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/工作聊天内容DEBUG1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/prompts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/utils/api_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/utils/file_operations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/截断生成原理.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/最多一次生成十个文件，多了需要bug里给出，文件再多就无法精确定位，这是目前的产品上限，详见通义灵码聊天记录.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/聊天.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebPurchaseSystem/聊天py使用说明.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/Docker开发环境/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/ESP32基础例程/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/Linux操作系统/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/Mediapipe视觉识别/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/MicroROS_Robot/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/MicroROS基础例程/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/ROS+OpenCV图像处理/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/ROS-WiFi图传模块的配置/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/ROS2基础教程/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/下载专区/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/产品简介/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/关于亚博/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/多机功能玩法/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/常见问题及解决方案/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/开发前的准备/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/开发环境搭建/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/快速启动控制/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/有问必答/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/服务与支持/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/机器人控制/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/机器人视觉交互/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/激光雷达玩法/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/版权信息/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/社交媒体平台/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/线上课程产品中心解决方案动态分享线上商城∨软件下载∨关于我们/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/组装教程/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/购买渠道/文档.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/雷达避障/代码解析.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/雷达避障/前置条件.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/雷达避障/启动并连接代理.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/雷达避障/启动程序.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROS/雷达避障/程序功能说明.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ask_kb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_kb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_project.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/instance/ecommerce.db" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoList/generated_project/backend/todolist.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/products.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/run.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/templates/add_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/add_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/templates/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/templates/edit_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/edit_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/templates/products.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/templates/recharge.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebPurchaseSystem/generated_project/templates/recharge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/templates/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_project/users.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +209,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -41,40 +220,103 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.Request.executor": "Run",
-    "Python.Split.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.ask_kb (1).executor": "Run",
-    "Python.generate_kb (1).executor": "Run",
-    "Python.generate_kb.executor": "Run",
-    "Python.generate_project (1).executor": "Run",
-    "Python.generate_project.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.python app.py.executor": "Run",
-    "Python.python main.py.executor": "Run",
-    "Python.python news_fetcher.py.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Shell Script.run.sh.executor": "Run",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/chtho/PycharmProjects/KnowledgeBase",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.base.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.orders.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.tempfile_1760792395616.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.users.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Node.js.app.js.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_api_exposer.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.111.executor&quot;: &quot;Run&quot;,
+    &quot;Python.123.executor&quot;: &quot;Run&quot;,
+    &quot;Python.API.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Request.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Split.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__init__ (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.__init__ (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.__init__ (3).executor&quot;: &quot;Run&quot;,
+    &quot;Python.__init__ (4).executor&quot;: &quot;Run&quot;,
+    &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.api_client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.api_exposer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.api_exposer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.app (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.app (3).executor&quot;: &quot;Run&quot;,
+    &quot;Python.app (4).executor&quot;: &quot;Run&quot;,
+    &quot;Python.app (5).executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ask_kb (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.ask_kb.executor&quot;: &quot;Run&quot;,
+    &quot;Python.code_updater.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config.executor&quot;: &quot;Run&quot;,
+    &quot;Python.file_operations.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_kb (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_kb.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project (3).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project新 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project新 (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project新 (3).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project新 (4).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project新 (5).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project新.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_project现在 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.interactive_usage (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.interactive_usage (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.interactive_usage.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project_structure.executor&quot;: &quot;Run&quot;,
+    &quot;Python.prompts.executor&quot;: &quot;Run&quot;,
+    &quot;Python.python -m database.init_db.executor&quot;: &quot;Run&quot;,
+    &quot;Python.python app.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.python app/main.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.python init_db.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.python main.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.python news_fetcher.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.routes.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;Python.truncation_handler.executor&quot;: &quot;Run&quot;,
+    &quot;Python.├── app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.截断生成.executor&quot;: &quot;Run&quot;,
+    &quot;Python.聊天.executor&quot;: &quot;Run&quot;,
+    &quot;Python.聊天2.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Shell Script.run.sh.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/chtho/PycharmProjects/Yursor&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\chtho\PycharmProjects\KnowledgeBase" />
+      <recent name="C:\Users\chtho\PycharmProjects\Yursor" />
+      <recent name="C:\Users\chtho\PycharmProjects\Yursor\电商平台生成器" />
+      <recent name="C:\Users\chtho\PycharmProjects\Yursor\B站视频平台生成器" />
+      <recent name="C:\Users\chtho\PycharmProjects\Yursor\生成器" />
+      <recent name="C:\Users\chtho\PycharmProjects\Yursor\project_generator\generated_project1" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\chtho\PycharmProjects\KnowledgeBase" />
-      <recent name="C:\Users\chtho\PycharmProjects\KnowledgeBase\generated_project" />
+      <recent name="C:\Users\chtho\PycharmProjects\Yursor\电商平台生成器" />
+      <recent name="C:\Users\chtho\PycharmProjects\Yursor\B站视频平台生成器" />
+      <recent name="C:\Users\chtho\PycharmProjects\Yursor\生成器" />
+      <recent name="C:\Users\chtho\PycharmProjects\Yursor\知识库\knowledge_base" />
+      <recent name="C:\Users\chtho\PycharmProjects\Yursor\知识库" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -82,7 +324,53 @@
       <command value="pip install -r requirements.txt" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.generate_project (1)">
+  <component name="RunManager" selected="Python.generate_project新">
+    <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Yursor" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ToDoList/generated_project/backend" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ToDoList/generated_project/backend/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Yursor" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WebPurchaseSystem/generated_project" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WebPurchaseSystem/generated_project/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Yursor" />
       <option name="ENV_FILES" value="" />
@@ -92,12 +380,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/generated_project" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BilibiliVideoSystem/generated_project" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generated_project/app.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BilibiliVideoSystem/generated_project/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -106,7 +394,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="generate_kb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="generate_project新 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Yursor" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -115,12 +403,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ToDoList" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generate_kb.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ToDoList/generate_project新.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -129,7 +417,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="generate_project (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="generate_project新" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Yursor" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,65 +426,27 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WebPurchaseSystem" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generate_project.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WebPurchaseSystem/generate_project新.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="python app.py" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Yursor" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/generated_project" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="run.sh" type="ShConfigurationType" temporary="true">
-      <option name="SCRIPT_TEXT" value="" />
-      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/generated_project/run.sh" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/generated_project" />
-      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
-      <option name="INTERPRETER_PATH" value="/bin/bash" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="EXECUTE_IN_TERMINAL" value="true" />
-      <option name="EXECUTE_SCRIPT_FILE" value="true" />
-      <envs />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.generate_project (1)" />
-        <item itemvalue="Python.generate_kb" />
+        <item itemvalue="Python.generate_project新" />
+        <item itemvalue="Python.app (2)" />
+        <item itemvalue="Python.app (1)" />
         <item itemvalue="Python.app" />
-        <item itemvalue="Python.python app.py" />
-        <item itemvalue="Shell Script.run.sh" />
+        <item itemvalue="Python.generate_project新 (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -222,25 +472,142 @@
       <workItem from="1758979693585" duration="687000" />
       <workItem from="1759105978750" duration="16000" />
       <workItem from="1760357412699" duration="12112000" />
-      <workItem from="1760409482158" duration="1060000" />
+      <workItem from="1760409482158" duration="20294000" />
+      <workItem from="1760501526369" duration="3628000" />
+      <workItem from="1760771937977" duration="18059000" />
+      <workItem from="1760791540225" duration="314000" />
+      <workItem from="1760852036588" duration="10069000" />
+      <workItem from="1760866046702" duration="15264000" />
+      <workItem from="1760935306811" duration="8260000" />
+      <workItem from="1761891742680" duration="1426000" />
+      <workItem from="1761893197603" duration="4438000" />
+      <workItem from="1761897701997" duration="94000" />
+      <workItem from="1761897808599" duration="1324000" />
+      <workItem from="1761899142806" duration="2460000" />
+      <workItem from="1761907748337" duration="1354000" />
+      <workItem from="1761909118053" duration="1769000" />
+      <workItem from="1761910947604" duration="1396000" />
+      <workItem from="1761912491845" duration="7753000" />
+      <workItem from="1761991952997" duration="16905000" />
+      <workItem from="1762047968960" duration="2754000" />
+      <workItem from="1762051276958" duration="16448000" />
+      <workItem from="1762169627410" duration="2324000" />
+      <workItem from="1762171974995" duration="7742000" />
+      <workItem from="1762180854660" duration="228000" />
+      <workItem from="1762181101798" duration="1784000" />
+      <workItem from="1762253519416" duration="12102000" />
+      <workItem from="1762266149713" duration="1413000" />
+      <workItem from="1762339437915" duration="13626000" />
+      <workItem from="1762428063780" duration="5805000" />
+      <workItem from="1762433942858" duration="4595000" />
+      <workItem from="1762438591316" duration="389000" />
+      <workItem from="1762439395677" duration="1336000" />
+      <workItem from="1762473972524" duration="2275000" />
+      <workItem from="1762476299867" duration="11761000" />
+      <workItem from="1762494391010" duration="655000" />
+      <workItem from="1762495069619" duration="11119000" />
+      <workItem from="1762518017200" duration="10569000" />
+      <workItem from="1762560123555" duration="1160000" />
+      <workItem from="1762561316907" duration="27871000" />
+      <workItem from="1762610579418" duration="7639000" />
+      <workItem from="1762664860358" duration="17113000" />
+      <workItem from="1762734115644" duration="28161000" />
+      <workItem from="1762774902859" duration="12028000" />
+      <workItem from="1762819009764" duration="430000" />
+      <workItem from="1762819475797" duration="2150000" />
+      <workItem from="1762821644112" duration="18697000" />
+      <workItem from="1762842634245" duration="351000" />
+      <workItem from="1762842992478" duration="995000" />
+      <workItem from="1762843996708" duration="7717000" />
+      <workItem from="1762859600174" duration="7334000" />
+      <workItem from="1762906341429" duration="1145000" />
+      <workItem from="1762907563442" duration="4684000" />
+      <workItem from="1762913081241" duration="8284000" />
+      <workItem from="1762924745852" duration="3009000" />
+      <workItem from="1762927874603" duration="713000" />
+      <workItem from="1762928622941" duration="497000" />
+      <workItem from="1762929147634" duration="509000" />
+      <workItem from="1762929664858" duration="751000" />
+      <workItem from="1762930426140" duration="562000" />
+      <workItem from="1762931008106" duration="6904000" />
+      <workItem from="1762998332092" duration="12000" />
+      <workItem from="1763002083343" duration="11555000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/KnowledgeBase$ask_kb__1_.coverage" NAME="ask_kb (1) Coverage Results" MODIFIED="1758726855001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/KnowledgeBase$generate_project.coverage" NAME="generate_project Coverage Results" MODIFIED="1760358350527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/KnowledgeBase$python_main_py.coverage" NAME="python main.py Coverage Results" MODIFIED="1760358845395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generated_project" />
-    <SUITE FILE_PATH="coverage/KnowledgeBase$main.coverage" NAME="main Coverage Results" MODIFIED="1760359336341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$routes.coverage" NAME="routes Coverage Results" MODIFIED="1761997982331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_generator/generated_project/backend" />
+    <SUITE FILE_PATH="coverage/Yursor$app__3_.coverage" NAME="app (3) Coverage Results" MODIFIED="1762927595055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/B站视频平台生成器/generated_projectB站视频平台" />
+    <SUITE FILE_PATH="coverage/Yursor$python_init_db_py.coverage" NAME="python init_db.py Coverage Results" MODIFIED="1761910814812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_generator/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$interactive_usage__2_.coverage" NAME="interactive_usage (2) Coverage Results" MODIFIED="1762474419591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/APIexplorer" />
+    <SUITE FILE_PATH="coverage/Yursor$generate_kb.coverage" NAME="generate_kb Coverage Results" MODIFIED="1762907274037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Yursor$python__m_database_init_db.coverage" NAME="python -m database.init_db Coverage Results" MODIFIED="1761901149185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_generator/generated_project" />
     <SUITE FILE_PATH="coverage/KnowledgeBase$generate_project__1_.coverage" NAME="generate_project (1) Coverage Results" MODIFIED="1760363285660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/KnowledgeBase$python_news_fetcher_py.coverage" NAME="python news_fetcher.py Coverage Results" MODIFIED="1760359308535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generated_project" />
-    <SUITE FILE_PATH="coverage/KnowledgeBase$Request.coverage" NAME="Request Coverage Results" MODIFIED="1758725817857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/KnowledgeBase$python_app_py.coverage" NAME="python app.py Coverage Results" MODIFIED="1760362973933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generated_project" />
+    <SUITE FILE_PATH="coverage/KnowledgeBase$main.coverage" NAME="main Coverage Results" MODIFIED="1760359336341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$api_exposer.coverage" NAME="api_exposer Coverage Results" MODIFIED="1762439475036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_generator/generated_project/APIexplorer" />
+    <SUITE FILE_PATH="coverage/Yursor$generate_project1.coverage" NAME="generate_project1 Coverage Results" MODIFIED="1760942913756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Yursor$generate_project__2_.coverage" NAME="generate_project新 (2) Coverage Results" MODIFIED="1762929644035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/电商平台生成器" />
+    <SUITE FILE_PATH="coverage/Yursor$config.coverage" NAME="config Coverage Results" MODIFIED="1762352787838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_generator/generated_project" />
     <SUITE FILE_PATH="coverage/KnowledgeBase$Split.coverage" NAME="Split Coverage Results" MODIFIED="1758723773584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Yursor$.coverage" NAME="聊天 Coverage Results" MODIFIED="1762827204162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Yursor$interactive_usage.coverage" NAME="interactive_usage Coverage Results" MODIFIED="1762475453890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_generator/generated_project1/APIexplorer" />
+    <SUITE FILE_PATH="coverage/Yursor$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1761895464922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_generator" />
+    <SUITE FILE_PATH="coverage/KnowledgeBase$generate_project.coverage" NAME="generate_project Coverage Results" MODIFIED="1760358350527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Yursor$generate_project__5_.coverage" NAME="generate_project新 (5) Coverage Results" MODIFIED="1762930164564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WebPurchaseSystem" />
+    <SUITE FILE_PATH="coverage/Yursor$project_structure.coverage" NAME="project_structure Coverage Results" MODIFIED="1760415012430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$python_app_main_py.coverage" NAME="python app/main.py Coverage Results" MODIFIED="1761898926747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_generator/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$api_exposer__1_.coverage" NAME="api_exposer (1) Coverage Results" MODIFIED="1762440671506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_generator/APIexplorer" />
+    <SUITE FILE_PATH="coverage/Yursor$python_app_py.coverage" NAME="python app.py Coverage Results" MODIFIED="1762910662864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/生成器/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$_app.coverage" NAME="├── app Coverage Results" MODIFIED="1762851720449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/生成器/generated_project" />
     <SUITE FILE_PATH="coverage/KnowledgeBase$generate_kb__1_.coverage" NAME="generate_kb (1) Coverage Results" MODIFIED="1758727247001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Yursor$__init____2_.coverage" NAME="__init__ (2) Coverage Results" MODIFIED="1761893973961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_root/interfaces" />
+    <SUITE FILE_PATH="coverage/Yursor$app__4_.coverage" NAME="app (4) Coverage Results" MODIFIED="1762927821800" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/电商平台生成器/generated_project电商" />
+    <SUITE FILE_PATH="coverage/Yursor$truncation_handler.coverage" NAME="truncation_handler Coverage Results" MODIFIED="1762753041841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/生成器" />
+    <SUITE FILE_PATH="coverage/Yursor$API.coverage" NAME="API Coverage Results" MODIFIED="1762171708646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Yursor$generate_project1__1_.coverage" NAME="generate_project1 (1) Coverage Results" MODIFIED="1762843669568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/生成器" />
+    <SUITE FILE_PATH="coverage/Yursor$generate_project.coverage" NAME="generate_project新 Coverage Results" MODIFIED="1762936416519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WebPurchaseSystem" />
+    <SUITE FILE_PATH="coverage/Yursor$generate_project__1_.coverage" NAME="generate_project新 (1) Coverage Results" MODIFIED="1762933479300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ToDoList" />
+    <SUITE FILE_PATH="coverage/Yursor$123.coverage" NAME="123 Coverage Results" MODIFIED="1762827539908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/生成器/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1762936699182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ToDoList/generated_project/backend" />
+    <SUITE FILE_PATH="coverage/KnowledgeBase$python_news_fetcher_py.coverage" NAME="python news_fetcher.py Coverage Results" MODIFIED="1760359308535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1762928700901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/待办清单生成器" />
+    <SUITE FILE_PATH="coverage/KnowledgeBase$Request.coverage" NAME="Request Coverage Results" MODIFIED="1758725817857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Yursor$generate_project__4_.coverage" NAME="generate_project新 (4) Coverage Results" MODIFIED="1762929842625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ToDoList" />
+    <SUITE FILE_PATH="coverage/KnowledgeBase$python_app_py.coverage" NAME="python app.py Coverage Results" MODIFIED="1760362973933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$api_client.coverage" NAME="api_client Coverage Results" MODIFIED="1762929304162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/待办清单生成器/utils" />
+    <SUITE FILE_PATH="coverage/Yursor$2.coverage" NAME="聊天2 Coverage Results" MODIFIED="1762838837686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Yursor$generate_kb__1_.coverage" NAME="generate_kb (1) Coverage Results" MODIFIED="1762907804668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/知识库" />
+    <SUITE FILE_PATH="coverage/Yursor$interactive_usage__1_.coverage" NAME="interactive_usage (1) Coverage Results" MODIFIED="1762491596376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/APIexplorer" />
+    <SUITE FILE_PATH="coverage/Yursor$app__5_.coverage" NAME="app (5) Coverage Results" MODIFIED="1762927962319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/B站视频平台生成器/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$main.coverage" NAME="main Coverage Results" MODIFIED="1762742919306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/生成器/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$111.coverage" NAME="111 Coverage Results" MODIFIED="1762842889191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/生成器" />
+    <SUITE FILE_PATH="coverage/Yursor$__init____3_.coverage" NAME="__init__ (3) Coverage Results" MODIFIED="1761893979974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_root/core" />
+    <SUITE FILE_PATH="coverage/Yursor$app__2_.coverage" NAME="app (2) Coverage Results" MODIFIED="1762937135400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WebPurchaseSystem/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$code_updater.coverage" NAME="code_updater Coverage Results" MODIFIED="1762350949535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_generator" />
+    <SUITE FILE_PATH="coverage/KnowledgeBase$ask_kb__1_.coverage" NAME="ask_kb (1) Coverage Results" MODIFIED="1758726855001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Yursor$ask_kb.coverage" NAME="ask_kb Coverage Results" MODIFIED="1762907897437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/知识库" />
+    <SUITE FILE_PATH="coverage/Yursor$file_operations.coverage" NAME="file_operations Coverage Results" MODIFIED="1762584635307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/生成器/utils" />
+    <SUITE FILE_PATH="coverage/KnowledgeBase$python_main_py.coverage" NAME="python main.py Coverage Results" MODIFIED="1760358845395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$generate_project__3_.coverage" NAME="generate_project新 (3) Coverage Results" MODIFIED="1762931062031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BilibiliVideoSystem" />
+    <SUITE FILE_PATH="coverage/Yursor$__init____1_.coverage" NAME="__init__ (1) Coverage Results" MODIFIED="1762928865308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/B站视频平台生成器" />
+    <SUITE FILE_PATH="coverage/Yursor$__init____4_.coverage" NAME="__init__ (4) Coverage Results" MODIFIED="1761893984856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_root/cli" />
+    <SUITE FILE_PATH="coverage/Yursor$app.coverage" NAME="app Coverage Results" MODIFIED="1762936317680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BilibiliVideoSystem/generated_project" />
+    <SUITE FILE_PATH="coverage/Yursor$run.coverage" NAME="run Coverage Results" MODIFIED="1762915353057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/生成器/generated_project" />
     <SUITE FILE_PATH="coverage/KnowledgeBase$app.coverage" NAME="app Coverage Results" MODIFIED="1760366170783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generated_project" />
-    <SUITE FILE_PATH="coverage/Yursor$generate_project__1_.coverage" NAME="generate_project (1) Coverage Results" MODIFIED="1760409698888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Yursor$prompts.coverage" NAME="prompts Coverage Results" MODIFIED="1762582275266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/生成器" />
   </component>
 </project>

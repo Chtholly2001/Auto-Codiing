@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1,
+    "user_id": 2,
+    "product_id": 1,
+    "product_name": "苹果17",
+    "quantity": 1,
+    "total_price": 5999.0,
+    "status": "已收货",
+    "created_at": "2025-11-02T14:15:28.697854",
+    "updated_at": "2025-11-02T15:39:12.727818"
+  },
+  {
+    "id": 2,
+    "user_id": 2,
+    "product_id": 1,
+    "product_name": "苹果17",
+    "quantity": 1,
+    "total_price": 5999.0,
+    "status": "已收货",
+    "created_at": "2025-11-02T14:31:26.876966",
+    "updated_at": "2025-11-02T15:39:15.450368"
+  },
+  {
+    "id": 3,
+    "user_id": 2,
+    "product_id": 5,
+    "product_name": "11",
+    "quantity": 1,
+    "total_price": 11.0,
+    "status": "未发货",
+    "created_at": "2025-11-02T15:52:55.043849",
+    "updated_at": "2025-11-02T15:52:55.043849"
+  },
+  {
+    "id": 4,
+    "user_id": 2,
+    "product_id": 2,
+    "product_name": "华为mate27",
+    "quantity": 1,
+    "total_price": 5999.9,
+    "status": "已收货",
+    "created_at": "2025-11-02T15:52:59.888431",
+    "updated_at": "2025-11-02T15:53:38.671943"
+  },
+  {
+    "id": 5,
+    "user_id": 2,
+    "product_id": 1,
+    "product_name": "苹果17",
+    "quantity": 1,
+    "total_price": 5999.0,
+    "status": "已收货",
+    "created_at": "2025-11-05T18:51:05.199034",
+    "updated_at": "2025-11-05T18:54:02.426004"
+  },
+  {
+    "id": 6,
+    "user_id": 2,
+    "product_id": 1,
+    "product_name": "苹果17",
+    "quantity": 1,
+    "total_price": 5999.0,
+    "status": "已收货",
+    "created_at": "2025-11-05T18:51:48.834060",
+    "updated_at": "2025-11-05T18:54:38.524409"
+  },
+  {
+    "id": 7,
+    "user_id": 2,
+    "product_id": 1,
+    "product_name": "苹果17",
+    "quantity": 1,
+    "total_price": 5999.0,
+    "status": "已收货",
+    "created_at": "2025-11-05T18:53:19.051528",
+    "updated_at": "2025-11-05T19:00:35.479928"
+  },
+  {
+    "id": 8,
+    "user_id": 2,
+    "product_id": 3,
+    "product_name": "123",
+    "quantity": 1,
+    "total_price": 123.0,
+    "status": "已收货",
+    "created_at": "2025-11-05T19:01:19.764658",
+    "updated_at": "2025-11-05T19:02:22.224822"
+  },
+  {
+    "id": 9,
+    "user_id": 2,
+    "product_id": 3,
+    "product_name": "123",
+    "quantity": 1,
+    "total_price": 123.0,
+    "status": "已收货",
+    "created_at": "2025-11-05T19:09:52.738649",
+    "updated_at": "2025-11-05T19:11:09.595054"
+  },
+  {
+    "id": 10,
+    "user_id": 2,
+    "product_id": 1,
+    "product_name": "苹果17",
+    "quantity": 2,
+    "total_price": 11998.0,
+    "status": "未发货",
+    "created_at": "2025-11-08T15:36:43.142472",
+    "updated_at": "2025-11-08T15:36:43.142472"
+  },
+  {
+    "id": 11,
+    "user_id": 2,
+    "product_id": 2,
+    "product_name": "华为mate27",
+    "quantity": 1,
+    "total_price": 5999.9,
+    "status": "已收货",
+    "created_at": "2025-11-08T15:37:24.785727",
+    "updated_at": "2025-11-08T15:39:13.255187"
+  },
+  {
+    "id": 12,
+    "user_id": 2,
+    "product_id": 1,
+    "product_name": "苹果17",
+    "quantity": 5,
+    "total_price": 29995.0,
+    "status": "已收货",
+    "created_at": "2025-11-08T16:05:12.111299",
+    "updated_at": "2025-11-08T16:07:49.525064"
+  },
+  {
+    "id": 13,
+    "user_id": 2,
+    "product_id": 2,
+    "product_name": "华为mate27",
+    "quantity": 5,
+    "total_price": 29999.5,
+    "status": "已收货",
+    "created_at": "2025-11-08T16:12:26.686749",
+    "updated_at": "2025-11-08T16:14:20.729355"
+  },
+  {
+    "id": 14,
+    "user_id": 2,
+    "product_id": 1,
+    "product_name": "苹果17",
+    "quantity": 1,
+    "total_price": 5999.0,
+    "status": "未发货",
+    "created_at": "2025-11-11T16:14:33.353748",
+    "updated_at": "2025-11-11T16:14:33.353748"
+  },
+  {
+    "id": 15,
+    "user_id": 2,
+    "product_id": 2,
+    "product_name": "华为mate27",
+    "quantity": 4,
+    "total_price": 23999.6,
+    "status": "未发货",
+    "created_at": "2025-11-11T16:14:59.384894",
+    "updated_at": "2025-11-11T16:14:59.384894"
+  }
+]

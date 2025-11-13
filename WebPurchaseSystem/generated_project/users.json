@@ -1,0 +1,96 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "$2b$12$wynFi7vR7tz2Ll3cxTCkP.5u6dzN45xgyNfWiQCY.xeNqlbGypKE.",
+    "balance": 132120.9,
+    "role": "admin",
+    "address": {
+      "province": "山东省",
+      "city": "",
+      "district": "",
+      "detail": "",
+      "phone": "19511678029"
+    }
+  },
+  {
+    "id": 2,
+    "username": "xuedexiag",
+    "password": "$2b$12$wynFi7vR7tz2Ll3cxTCkP.5u6dzN45xgyNfWiQCY.xeNqlbGypKE.",
+    "balance": 896968.3,
+    "role": "user",
+    "address": {
+      "province": "山东省",
+      "city": "泰安",
+      "district": "新泰市",
+      "detail": "山东省泰安市新泰市",
+      "phone": "19511678029"
+    }
+  },
+  {
+    "id": 3,
+    "username": "123",
+    "password": "$2b$12$wynFi7vR7tz2Ll3cxTCkP.5u6dzN45xgyNfWiQCY.xeNqlbGypKE.",
+    "role": "admin",
+    "balance": 133123.0,
+    "created_at": "2025-10-18T18:52:21.079984",
+    "address": {
+      "province": "山东省",
+      "city": "泰安",
+      "district": "新泰市",
+      "detail": "山东省泰安市新泰市",
+      "phone": "13518685766"
+    }
+  },
+  {
+    "id": 4,
+    "username": "1234",
+    "password": "$2b$12$wynFi7vR7tz2Ll3cxTCkP.5u6dzN45xgyNfWiQCY.xeNqlbGypKE.",
+    "role": "user",
+    "balance": 0.0,
+    "created_at": "2025-10-18T19:22:53.307169",
+    "address": {
+      "province": "",
+      "city": "",
+      "district": "",
+      "detail": "",
+      "phone": ""
+    }
+  },
+  {
+    "id": 5,
+    "username": "test",
+    "password": "$2b$12$wynFi7vR7tz2Ll3cxTCkP.5u6dzN45xgyNfWiQCY.xeNqlbGypKE.",
+    "role": "user",
+    "balance": 1000.0,
+    "created_at": "2024-01-01",
+    "address": {
+      "province": "",
+      "city": "",
+      "district": "",
+      "detail": "",
+      "phone": ""
+    }
+  },
+  {
+    "id": 6,
+    "username": "1235",
+    "password": "$2b$12$wynFi7vR7tz2Ll3cxTCkP.5u6dzN45xgyNfWiQCY.xeNqlbGypKE.",
+    "role": "user",
+    "balance": 0.0,
+    "address": {
+      "province": "",
+      "city": "",
+      "district": "",
+      "detail": "",
+      "phone": ""
+    }
+  },
+  {
+    "id": 7,
+    "username": "1236",
+    "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "role": "user",
+    "balance": 0.0
+  }
+]

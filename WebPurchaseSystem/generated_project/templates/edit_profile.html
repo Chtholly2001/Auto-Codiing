@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}编辑个人资料 - 电商管理系统{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">编辑个人资料</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('edit_profile') }}">
+                    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="username" class="form-label">用户名</label>
+                            <input type="text" class="form-control" id="username" value="{{ user.username }}" readonly>
+                            <div class="form-text">用户名不可修改</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="balance" class="form-label">账户余额</label>
+                            <input type="text" class="form-control" id="balance" value="¥{{ '%.2f'|format(user.balance) }}" readonly>
+                        </div>
+                    </div>
+
+                    <h5 class="mb-3">收货地址</h5>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="province" class="form-label">省份</label>
+                            <input type="text" class="form-control" id="province" name="province" 
+                                   value="{{ user.address.province if user.address else '' }}" 
+                                   placeholder="请输入省份">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="city" class="form-label">城市</label>
+                            <input type="text" class="form-control" id="city" name="city" 
+                                   value="{{ user.address.city if user.address else '' }}" 
+                                   placeholder="请输入城市">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="district" class="form-label">区县</label>
+                            <input type="text" class="form-control" id="district" name="district" 
+                                   value="{{ user.address.district if user.address else '' }}" 
+                                   placeholder="请输入区县">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="detail" class="form-label">详细地址</label>
+                        <textarea class="form-control" id="detail" name="detail" rows="3" 
+                                  placeholder="请输入详细地址">{{ user.address.detail if user.address else '' }}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">手机号码</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" 
+                               value="{{ user.address.phone if user.address else '' }}" 
+                               placeholder="请输入11位手机号码">
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('profile') }}" class="btn btn-secondary me-md-2">取消</a>
+                        <button type="submit" class="btn btn-primary">保存更改</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

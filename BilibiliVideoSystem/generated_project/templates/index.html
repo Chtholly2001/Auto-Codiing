@@ -1,0 +1,403 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <nav class="navbar">
+        <div class="nav-brand">B站视频预览平台</div>
+        <div class="nav-links">
+            <a href="#" class="nav-link">首页</a>
+            <a href="#" class="nav-link">热门</a>
+            <a href="#" class="nav-link">分类</a>
+        </div>
+    </nav>
+    
+    <header class="page-header">
+        <h1 class="page-title">B站视频预览平台</h1>
+        <p class="page-subtitle">点击下方卡片跳转到B站观看完整视频</p>
+    </header>
+
+    <!-- 视频上传表单 -->
+    <div class="upload-section">
+        <h2 class="upload-title">上传视频信息</h2>
+        <form id="videoUploadForm" class="upload-form">
+            <div class="form-group">
+                <label for="videoTitle">视频标题 *</label>
+                <input type="text" id="videoTitle" name="title" required class="form-input">
+            </div>
+            
+            <div class="form-group">
+                <label for="videoUrl">B站视频链接 *</label>
+                <input type="url" id="videoUrl" name="bilibili_url" required class="form-input" 
+                       placeholder="https://www.bilibili.com/video/BV..." 
+                       pattern="https://www\.bilibili\.com/video/.*">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="upName">UP主名称</label>
+                    <input type="text" id="upName" name="up_name" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="publishDate">发布日期</label>
+                    <input type="text" id="publishDate" name="publish_date" class="form-input" placeholder="YYYY-MM-DD">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="playCount">播放量</label>
+                    <input type="text" id="playCount" name="play_count" class="form-input" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="danmakuCount">弹幕数</label>
+                    <input type="text" id="danmakuCount" name="danmaku_count" class="form-input" value="0">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="coverColor">封面颜色</label>
+                <input type="text" id="coverColor" name="cover_color" class="form-input" value="linear-gradient(45deg, #00a1d6, #fb7299)" placeholder="linear-gradient(45deg, #color1, #color2)">
+            </div>
+            
+            <div class="form-group">
+                <label for="videoDescription">视频描述</label>
+                <textarea id="videoDescription" name="description" class="form-textarea" rows="3"></textarea>
+            </div>
+            
+            <button type="submit" class="upload-btn">
+                <span class="btn-icon">📤</span>
+                上传视频信息
+            </button>
+        </form>
+        
+        <div id="uploadStatus" class="upload-status"></div>
+    </div>
+    
+    <div class="videos-grid">
+        {% for video in videos %}
+        <div class="video-card" data-video-id="{{ video.id }}">
+            <div class="video-cover-container">
+                <div class="video-cover" style="background: {{ video.cover_color }};"></div>
+                <div class="video-overlay">
+                    <a href="{{ video.bilibili_url }}" class="play-link" target="_blank">
+                        <span class="play-icon">▶</span>
+                    </a>
+                </div>
+            </div>
+            <div class="video-content">
+                <h3 class="video-title">{{ video.title }}</h3>
+                <div class="video-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👁️</span>
+                        <span>{{ video.play_count }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">💬</span>
+                        <span>{{ video.danmaku_count }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📅</span>
+                        <span>{{ video.publish_date }}</span>
+                    </div>
+                </div>
+                <div class="up-info">
+                    <div class="up-avatar">
+                        <span class="avatar-text">UP</span>
+                    </div>
+                    <div class="up-details">
+                        <div class="up-name">{{ video.up_name }}</div>
+                        <div class="up-badge">UP主</div>
+                    </div>
+                </div>
+                <p class="video-desc">{{ video.description }}</p>
+                <div class="video-actions">
+                    <a href="{{ video.bilibili_url }}" class="watch-btn" target="_blank">
+                        <span class="btn-icon">▶</span>
+                        前往B站观看完整视频
+                    </a>
+                    <button class="delete-btn" onclick="deleteVideo({{ video.id }})" data-video-id="{{ video.id }}">
+                        <span class="btn-icon">🗑️</span>
+                        删除
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <footer class="page-footer">
+        <div class="footer-content">
+            <p class="footer-text">本平台仅用于预览B站视频信息，完整内容请前往B站观看</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">关于我们</a>
+                <a href="#" class="footer-link">隐私政策</a>
+                <a href="#" class="footer-link">联系我们</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+function deleteVideo(videoId) {
+    if (confirm('确定要删除这个视频吗？')) {
+        fetch(`/api/delete_video/${videoId}`, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert('删除失败: ' + data.error);
+            } else {
+                // 从页面移除视频卡片
+                const videoCard = document.querySelector(`[data-video-id="${videoId}"]`);
+                if (videoCard) {
+                    videoCard.remove();
+                }
+                alert('视频删除成功');
+            }
+        })
+        .catch(error => {
+            alert('网络错误: ' + error.message);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const uploadForm = document.getElementById('videoUploadForm');
+    const uploadStatus = document.getElementById('uploadStatus');
+
+    if (uploadForm) {
+        uploadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 修正ID引用 - 与HTML中的ID保持一致
+            const formData = {
+                title: document.getElementById('videoTitle').value,
+                bilibili_url: document.getElementById('videoUrl').value,
+                cover_color: document.getElementById('coverColor').value,
+                play_count: document.getElementById('playCount').value || '0',
+                danmaku_count: document.getElementById('danmakuCount').value || '0',
+                publish_date: document.getElementById('publishDate').value,
+                up_name: document.getElementById('upName').value,
+                description: document.getElementById('videoDescription').value
+            };
+            
+            // 清除之前的验证样式
+            const videoUrlInput = document.getElementById('videoUrl');
+            if (uploadStatus && videoUrlInput) {
+                videoUrlInput.style.borderColor = '';
+                uploadStatus.style.display = 'none';
+            }
+            
+            // 显示上传中状态
+            if (uploadStatus) {
+                uploadStatus.textContent = '上传中...';
+                uploadStatus.className = 'upload-status uploading';
+                uploadStatus.style.display = 'block';
+            }
+            
+            // 发送请求到后端
+            fetch('/api/add_video', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (uploadStatus) {
+                    if (data.error) {
+                        uploadStatus.textContent = '上传失败: ' + data.error;
+                        uploadStatus.className = 'upload-status error';
+                        
+                        // 如果是URL错误，高亮显示URL输入框
+                        if (data.error.includes('链接') || data.error.includes('URL')) {
+                            videoUrlInput.style.borderColor = '#ff4757';
+                        }
+                    } else {
+                        uploadStatus.textContent = '上传成功！';
+                        uploadStatus.className = 'upload-status success';
+                        
+                        // 清空表单
+                        uploadForm.reset();
+                        
+                        // 动态添加新视频到页面
+                        if (data.video) {
+                            addVideoToPage(data.video);
+                        }
+                    }
+                    uploadStatus.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                if (uploadStatus) {
+                    uploadStatus.textContent = '网络错误: ' + error.message;
+                    uploadStatus.className = 'upload-status error';
+                    uploadStatus.style.display = 'block';
+                }
+            });
+        });
+    }
+    
+    // 改进动态添加视频函数
+    function addVideoToPage(videoData) {
+        const videosGrid = document.querySelector('.videos-grid');
+        if (!videosGrid) return;
+        
+        const videoCard = document.createElement('div');
+        videoCard.className = 'video-card';
+        videoCard.setAttribute('data-video-id', videoData.id);
+        videoCard.innerHTML = `
+            <div class="video-cover-container">
+                <div class="video-cover" style="background: ${videoData.cover_color || 'linear-gradient(45deg, #00a1d6, #fb7299)'};"></div>
+                <div class="video-overlay">
+                    <a href="${videoData.bilibili_url || '#'}" class="play-link" target="_blank">
+                        <span class="play-icon">▶</span>
+                    </a>
+                </div>
+            </div>
+            <div class="video-content">
+                <h3 class="video-title">${videoData.title || '未命名视频'}</h3>
+                <div class="video-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👁️</span>
+                        <span>${videoData.play_count || '0'}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">💬</span>
+                        <span>${videoData.danmaku_count || '0'}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📅</span>
+                        <span>${videoData.publish_date || '未知日期'}</span>
+                    </div>
+                </div>
+                <div class="up-info">
+                    <div class="up-avatar">
+                        <span class="avatar-text">UP</span>
+                    </div>
+                    <div class="up-details">
+                        <div class="up-name">${videoData.up_name || '未知UP主'}</div>
+                        <div class="up-badge">UP主</div>
+                    </div>
+                </div>
+                <p class="video-desc">${videoData.description || '暂无描述'}</p>
+                <div class="video-actions">
+                    <a href="${videoData.bilibili_url || '#'}" class="watch-btn" target="_blank">
+                        <span class="btn-icon">▶</span>
+                        前往B站观看完整视频
+                    </a>
+                    <button class="delete-btn" onclick="deleteVideo(${videoData.id})" data-video-id="${videoData.id}">
+                        <span class="btn-icon">🗑️</span>
+                        删除
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        // 添加到网格的开头
+        videosGrid.insertBefore(videoCard, videosGrid.firstChild);
+    }
+});
+</script>
+
+<style>
+.upload-status {
+    display: none;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.upload-status.uploading {
+    background: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #bbdefb;
+}
+
+.upload-status.success {
+    background: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.upload-status.error {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.form-input:invalid {
+    border-color: #ffcdd2;
+}
+
+.form-input:valid {
+    border-color: #c8e6c9;
+}
+
+/* 添加删除按钮样式 */
+.delete-btn {
+    background: #ff4757;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+    background: #ff3742;
+}
+
+/* 添加播放链接样式 */
+.play-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.play-link:hover {
+    transform: scale(1.1);
+}
+
+.play-link:hover .play-icon {
+    opacity: 0.8;
+}
+
+/* 确保视频封面容器有正确的定位 */
+.video-cover-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-cover-container:hover .video-overlay {
+    opacity: 1;
+}
+</style>
+{% endblock %}

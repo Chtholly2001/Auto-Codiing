@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - 购物管理系统{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">系统概览</h1>
+</div>
+
+<div class="row">
+    <!-- 统计卡片 -->
+    <div class="col-md-4 mb-4">
+        <div class="card text-white bg-primary stat-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">商品总数</h5>
+                        <h2 class="mb-0">{{ total_products }}</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="bi bi-box" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a href="{{ url_for('products') }}" class="text-white">查看详情</a>
+                <i class="bi bi-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card text-white bg-success stat-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">用户总数</h5>
+                        <h2 class="mb-0">{{ total_users }}</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="bi bi-people" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                {% if session.role == 'admin' %}
+                <a href="{{ url_for('user_management') }}" class="text-white">查看详情</a>
+                <i class="bi bi-arrow-right"></i>
+                {% else %}
+                <span>仅管理员可见</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card text-white bg-warning stat-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        {% if session.role == 'admin' %}
+                        <h5 class="card-title">店铺余额</h5>
+                        {% else %}
+                        <h5 class="card-title">账户余额</h5>
+                        {% endif %}
+                        <h2 class="mb-0">¥{{ "%.2f"|format(user_balance) }}</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="bi bi-wallet2" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                {% if session.role != 'admin' %}
+                <a href="{{ url_for('recharge') }}" class="text-white">立即充值</a>
+                <i class="bi bi-arrow-right"></i>
+                {% else %}
+                <span>店铺余额</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">快速操作</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('products') }}" class="btn btn-outline-primary w-100">
+                            <i class="bi bi-box me-2"></i>浏览商品
+                        </a>
+                    </div>
+                    {% if session.role == 'admin' %}
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('add_product') }}" class="btn btn-outline-success w-100">
+                            <i class="bi bi-plus-circle me-2"></i>添加商品
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('user_management') }}" class="btn btn-outline-info w-100">
+                            <i class="bi bi-people me-2"></i>用户管理
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('view_cart') }}" class="btn btn-outline-success w-100">
+                            <i class="bi bi-cart me-2"></i>购物车
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if session.role != 'admin' %}
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('recharge') }}" class="btn btn-outline-warning w-100">
+                            <i class="bi bi-wallet2 me-2"></i>账户充值
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">系统信息</h5>
+            </div>
+            <div class="card-body">
+                <p>欢迎使用电商管理系统！当前登录用户：<strong>{{ session.username }}</strong></p>
+                <p>您的角色：<span class="badge bg-{{ 'danger' if session.role == 'admin' else 'primary' }}">{{ '管理员' if session.role == 'admin' else '普通用户' }}</span></p>
+                <p>登录时间：{{ session.get('login_time', '未知') }}</p>
+                {% if session.role == 'admin' %}
+                <p><strong>店铺余额：</strong>¥{{ "%.2f"|format(user_balance) }}</p>
+                {% else %}
+                <p><strong>账户余额：</strong>¥{{ "%.2f"|format(user_balance) }}</p>
+                {% endif %}
+                <!-- 添加爱心消息显示 -->
+                {% if love_message %}
+                <div class="alert alert-info mt-3">
+                    <i class="bi bi-heart-fill text-danger"></i> 
+                    <strong style="color: red;">{{ love_message }}</strong>
+                    <div class="mt-2">当前的北京时间为：</div>
+                    <span id="beijing-time" class="ms-2 fw-bold"></span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// 显示北京时间的函数
+function updateBeijingTime() {
+    const now = new Date();
+    
+    // 转换为北京时间 (UTC+8)
+    const beijingTime = new Date(now.getTime() + (8 * 60 * 60 * 1000));
+    
+    // 格式化时间
+    const year = beijingTime.getUTCFullYear();
+    const month = String(beijingTime.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(beijingTime.getUTCDate()).padStart(2, '0');
+    const hours = String(beijingTime.getUTCHours()).padStart(2, '0');
+    const minutes = String(beijingTime.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(beijingTime.getUTCSeconds()).padStart(2, '0');
+    
+    const timeString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    
+    // 更新显示
+    document.getElementById('beijing-time').textContent = timeString;
+}
+
+// 页面加载时立即显示时间
+updateBeijingTime();
+
+// 每秒更新一次时间
+setInterval(updateBeijingTime, 1000);
+</script>
+{% endblock %}
+<!-- 文件结束，勿再生成 -->

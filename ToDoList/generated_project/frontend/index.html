@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList - 待办事项管理</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+    <div class="container">
+        <header class="header">
+            <h1>📝 我的待办清单</h1>
+            <p>高效管理您的日常任务</p>
+        </header>
+
+        <main class="main">
+            <!-- 主题切换 -->
+            <div class="theme-switcher">
+                <button id="themeToggle" class="btn-secondary">🌙 切换暗色</button>
+            </div>
+
+            <!-- 添加任务区域 -->
+            <div class="add-task-section">
+                <input 
+                    type="text" 
+                    id="taskInput" 
+                    placeholder="请输入新的待办事项..." 
+                    maxlength="100"
+                >
+                <select id="taskPriority">
+                    <option value="low">低优先级</option>
+                    <option value="medium" selected>中优先级</option>
+                    <option value="high">高优先级</option>
+                </select>
+                <input type="date" id="taskDueDate">
+                <input type="text" id="taskTags" placeholder="标签 (用逗号分隔)">
+                <button id="addTaskBtn" class="btn-primary">添加任务</button>
+            </div>
+
+            <!-- 任务筛选 -->
+            <div class="task-filters">
+                <select id="filterStatus">
+                    <option value="all">所有状态</option>
+                    <option value="pending">待完成</option>
+                    <option value="completed">已完成</option>
+                </select>
+                <select id="filterPriority">
+                    <option value="all">所有优先级</option>
+                    <option value="high">高优先级</option>
+                    <option value="medium">中优先级</option>
+                    <option value="low">低优先级</option>
+                </select>
+                <input type="text" id="searchInput" placeholder="搜索任务...">
+                <button id="clearFilters" class="btn-secondary">清除筛选</button>
+            </div>
+
+            <!-- 任务统计 -->
+            <div class="task-stats">
+                <span>总计: <strong id="totalTasks">0</strong> 个任务</span>
+                <span>已完成: <strong id="completedTasks">0</strong> 个</span>
+                <span>待完成: <strong id="pendingTasks">0</strong> 个</span>
+                <button id="exportBtn" class="btn-secondary">导出JSON</button>
+                <button id="summaryBtn" class="btn-ai">AI总结</button>
+            </div>
+
+            <!-- 进度图表 -->
+            <div class="progress-chart" id="progressChart" style="display: none;">
+                <canvas id="taskChart" width="400" height="200"></canvas>
+            </div>
+
+            <!-- 任务列表 -->
+            <div class="task-list" id="taskList">
+                <!-- 任务项将通过JavaScript动态生成 -->
+                <div class="empty-state" id="emptyState">
+                    <p>🎉 暂无待办事项，添加一个任务开始吧！</p>
+                </div>
+            </div>
+
+            <!-- 分页控制 -->
+            <div class="pagination" id="pagination" style="display: none;">
+                <button id="prevPage" class="btn-secondary">上一页</button>
+                <span id="pageInfo">第 1 页</span>
+                <button id="nextPage" class="btn-secondary">下一页</button>
+            </div>
+
+            <!-- AI总结区域 -->
+            <div class="summary-section" id="summarySection" style="display: none;">
+                <div class="summary-header">
+                    <h3>🤖 AI任务分析</h3>
+                    <button id="closeSummaryBtn" class="btn-close">×</button>
+                </div>
+                <div class="summary-content" id="summaryContent">
+                    <!-- AI总结内容将在这里显示 -->
+                </div>
+                <div class="summary-loading" id="summaryLoading" style="display: none;">
+                    <p>AI正在分析您的任务...</p>
+                </div>
+                <div class="summary-error" id="summaryError" style="display: none;">
+                    <p>总结生成失败，请稍后重试</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>ToDoList应用 &copy; 2024</p>
+        </footer>
+    </div>
+
+    <script>
+        class ToDoApp {
+            constructor() {
+                this.baseURL = 'http://localhost:5000/api';
+                this.tasks = [];
+                this.currentPage = 1;
+                this.tasksPerPage = 10;
+                this.filteredTasks = [];
+                
+                this.initializeElements();
+                this.bindEvents();
+                this.loadTasks();
+                this.loadTheme(); // 加载保存的主题
+            }
+
+            initializeElements() {
+                // 输入元素
+                this.taskInput = document.getElementById('taskInput');
+                this.taskPriority = document.getElementById('taskPriority');
+                this.taskDueDate = document.getElementById('taskDueDate');
+                this.taskTags = document.getElementById('taskTags');
+                
+                // 按钮元素
+                this.addTaskBtn = document.getElementById('addTaskBtn');
+                this.themeToggle = document.getElementById('themeToggle');
+                this.exportBtn = document.getElementById('exportBtn');
+                this.summaryBtn = document.getElementById('summaryBtn');
+                this.clearFilters = document.getElementById('clearFilters');
+                this.prevPage = document.getElementById('prevPage');
+                this.nextPage = document.getElementById('nextPage');
+                this.closeSummaryBtn = document.getElementById('closeSummaryBtn');
+                
+                // 筛选元素
+                this.filterStatus = document.getElementById('filterStatus');
+                this.filterPriority = document.getElementById('filterPriority');
+                this.searchInput = document.getElementById('searchInput');
+                
+                // 显示元素
+                this.taskList = document.getElementById('taskList');
+                this.emptyState = document.getElementById('emptyState');
+                this.pagination = document.getElementById('pagination');
+                this.pageInfo = document.getElementById('pageInfo');
+                this.totalTasks = document.getElementById('totalTasks');
+                this.completedTasks = document.getElementById('completedTasks');
+                this.pendingTasks = document.getElementById('pendingTasks');
+                
+                // AI总结元素
+                this.summarySection = document.getElementById('summarySection');
+                this.summaryContent = document.getElementById('summaryContent');
+                this.summaryLoading = document.getElementById('summaryLoading');
+                this.summaryError = document.getElementById('summaryError');
+            }
+
+            bindEvents() {
+                // 任务操作
+                this.addTaskBtn.addEventListener('click', () => this.addTask());
+                this.taskInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.addTask();
+                });
+
+                // 筛选和搜索
+                this.filterStatus.addEventListener('change', () => this.applyFilters());
+                this.filterPriority.addEventListener('change', () => this.applyFilters());
+                this.searchInput.addEventListener('input', (e) => this.searchTasks(e.target.value));
+                this.clearFilters.addEventListener('click', () => this.clearAllFilters());
+
+                // 分页
+                this.prevPage.addEventListener('click', () => this.previousPage());
+                this.nextPage.addEventListener('click', () => this.nextPage());
+
+                // 其他功能
+                this.themeToggle.addEventListener('click', () => this.toggleTheme());
+                this.exportBtn.addEventListener('click', () => this.exportTasks());
+                this.summaryBtn.addEventListener('click', () => this.generateSummary());
+                this.closeSummaryBtn.addEventListener('click', () => this.hideSummary());
+            }
+
+            async addTask() {
+                const title = this.taskInput.value.trim();
+                const priority = this.taskPriority.value;
+                const dueDate = this.taskDueDate.value;
+                const tags = this.taskTags.value;
+
+                if (!title) {
+                    this.showError('请输入任务内容');
+                    return;
+                }
+
+                try {
+                    const taskData = {
+                        title,
+                        priority,
+                        due_date: dueDate || null,
+                        tags: tags || null
+                    };
+
+                    const response = await fetch(`${this.baseURL}/tasks`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(taskData)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('添加任务失败');
+                    }
+
+                    // 清空输入框
+                    this.taskInput.value = '';
+                    this.taskDueDate.value = '';
+                    this.taskTags.value = '';
+                    this.taskPriority.value = 'medium';
+
+                    // 重新加载任务
+                    await this.loadTasks();
+                    this.showSuccess('任务添加成功');
+
+                } catch (error) {
+                    console.error('添加任务错误:', error);
+                    this.showError('添加任务失败，请重试');
+                }
+            }
+
+            async loadTasks() {
+                try {
+                    const response = await fetch(`${this.baseURL}/tasks`);
+                    if (!response.ok) {
+                        throw new Error('获取任务失败');
+                    }
+                    this.tasks = await response.json();
+                    this.applyFilters();
+                } catch (error) {
+                    console.error('加载任务错误:', error);
+                    this.showError('加载任务失败');
+                }
+            }
+
+            async getAllTasks() {
+                try {
+                    const response = await fetch(`${this.baseURL}/tasks`);
+                    if (!response.ok) {
+                        throw new Error('获取任务失败');
+                    }
+                    return await response.json();
+                } catch (error) {
+                    console.error('获取所有任务错误:', error);
+                    this.showError('获取任务失败');
+                    return [];
+                }
+            }
+
+            searchTasks(keyword) {
+                if (!keyword.trim()) {
+                    this.applyFilters();
+                    return;
+                }
+
+                const filtered = this.tasks.filter(task => 
+                    task.title.toLowerCase().includes(keyword.toLowerCase()) ||
+                    (task.tags && task.tags.toLowerCase().includes(keyword.toLowerCase()))
+                );
+                this.filteredTasks = filtered;
+                this.renderTasks();
+            }
+
+            applyFilters() {
+                const statusFilter = this.filterStatus.value;
+                const priorityFilter = this.filterPriority.value;
+                const searchKeyword = this.searchInput.value.trim();
+
+                let filteredTasks = this.tasks;
+
+                // 搜索筛选
+                if (searchKeyword) {
+                    filteredTasks = filteredTasks.filter(task => 
+                        task.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+                        (task.tags && task.tags.toLowerCase().includes(searchKeyword.toLowerCase()))
+                    );
+                }
+
+                // 状态筛选
+                if (statusFilter === 'completed') {
+                    filteredTasks = filteredTasks.filter(task => task.completed);
+                } else if (statusFilter === 'pending') {
+                    filteredTasks = filteredTasks.filter(task => !task.completed);
+                }
+
+                // 优先级筛选
+                if (priorityFilter !== 'all') {
+                    filteredTasks = filteredTasks.filter(task => task.priority === priorityFilter);
+                }
+
+                this.filteredTasks = filteredTasks;
+                this.currentPage = 1;
+                this.renderTasks();
+            }
+
+            clearAllFilters() {
+                this.filterStatus.value = 'all';
+                this.filterPriority.value = 'all';
+                this.searchInput.value = '';
+                this.loadTasks();
+            }
+
+            renderTasks() {
+                const startIndex = (this.currentPage - 1) * this.tasksPerPage;
+                const endIndex = startIndex + this.tasksPerPage;
+                const tasksToShow = this.filteredTasks.slice(startIndex, endIndex);
+
+                // 更新统计信息
+                this.updateStats();
+
+                // 清空任务列表
+                this.taskList.innerHTML = '';
+
+                if (tasksToShow.length === 0) {
+                    this.emptyState.style.display = 'block';
+                    this.pagination.style.display = 'none';
+                    return;
+                }
+
+                this.emptyState.style.display = 'none';
+
+                // 渲染任务项
+                tasksToShow.forEach(task => {
+                    const taskElement = this.createTaskElement(task);
+                    this.taskList.appendChild(taskElement);
+                });
+
+                // 更新分页
+                this.updatePagination();
+            }
+
+            createTaskElement(task) {
+                const taskDiv = document.createElement('div');
+                taskDiv.className = `task-item ${task.completed ? 'completed' : ''}`;
+                taskDiv.innerHTML = `
+                    <div class="task-content">
+                        <input type="checkbox" class="task-checkbox" ${task.completed ? 'checked' : ''}>
+                        <span class="task-title">${this.escapeHtml(task.title)}</span>
+                        <div class="task-meta">
+                            ${task.priority ? `<span class="priority-badge priority-${task.priority}">${this.getPriorityText(task.priority)}</span>` : ''}
+                            ${task.due_date ? `<span class="due-date">📅 ${task.due_date}</span>` : ''}
+                            ${task.tags ? `<span class="tags">🏷️ ${this.escapeHtml(task.tags)}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn-edit" data-id="${task.id}">编辑</button>
+                        <button class="btn-delete" data-id="${task.id}">删除</button>
+                    </div>
+                `;
+
+                // 绑定事件
+                const checkbox = taskDiv.querySelector('.task-checkbox');
+                checkbox.addEventListener('change', () => this.toggleTask(task.id));
+
+                const editBtn = taskDiv.querySelector('.btn-edit');
+                editBtn.addEventListener('click', () => this.editTask(task));
+
+                const deleteBtn = taskDiv.querySelector('.btn-delete');
+                deleteBtn.addEventListener('click', () => this.deleteTask(task.id));
+
+                return taskDiv;
+            }
+
+            async toggleTask(taskId) {
+                try {
+                    const task = this.tasks.find(t => t.id === taskId);
+                    const response = await fetch(`${this.baseURL}/tasks/${taskId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            completed: !task.completed
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('更新任务失败');
+                    }
+
+                    await this.loadTasks();
+                } catch (error) {
+                    console.error('切换任务状态错误:', error);
+                    this.showError('更新任务失败');
+                }
+            }
+
+            async deleteTask(taskId) {
+                if (!confirm('确定要删除这个任务吗？')) {
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`${this.baseURL}/tasks/${taskId}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('删除任务失败');
+                    }
+
+                    await this.loadTasks();
+                    this.showSuccess('任务删除成功');
+                } catch (error) {
+                    console.error('删除任务错误:', error);
+                    this.showError('删除任务失败');
+                }
+            }
+
+            editTask(task) {
+                const newTitle = prompt('编辑任务:', task.title);
+                if (newTitle !== null && newTitle.trim() !== '') {
+                    this.updateTask(task.id, { title: newTitle.trim() });
+                }
+            }
+
+            async updateTask(taskId, updates) {
+                try {
+                    const response = await fetch(`${this.baseURL}/tasks/${taskId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(updates)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('更新任务失败');
+                    }
+
+                    await this.loadTasks();
+                    this.showSuccess('任务更新成功');
+                } catch (error) {
+                    console.error('更新任务错误:', error);
+                    this.showError('更新任务失败');
+                }
+            }
+
+            updateStats() {
+                const total = this.filteredTasks.length;
+                const completed = this.filteredTasks.filter(task => task.completed).length;
+                const pending = total - completed;
+
+                this.totalTasks.textContent = total;
+                this.completedTasks.textContent = completed;
+                this.pendingTasks.textContent = pending;
+            }
+
+            updatePagination() {
+                const totalPages = Math.ceil(this.filteredTasks.length / this.tasksPerPage);
+                
+                if (totalPages <= 1) {
+                    this.pagination.style.display = 'none';
+                    return;
+                }
+
+                this.pagination.style.display = 'flex';
+                this.pageInfo.textContent = `第 ${this.currentPage} 页，共 ${totalPages} 页`;
+
+                this.prevPage.disabled = this.currentPage === 1;
+                this.nextPage.disabled = this.currentPage === totalPages;
+            }
+
+            previousPage() {
+                if (this.currentPage > 1) {
+                    this.currentPage--;
+                    this.renderTasks();
+                }
+            }
+
+            nextPage() {
+                const totalPages = Math.ceil(this.filteredTasks.length / this.tasksPerPage);
+                if (this.currentPage < totalPages) {
+                    this.currentPage++;
+                    this.renderTasks();
+                }
+            }
+
+            async generateSummary() {
+                this.showSummaryLoading();
+                try {
+                    const response = await fetch(`${this.baseURL}/tasks/summary`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json().catch(() => ({}));
+                        throw new Error(errorData.error || `生成总结失败! 状态: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    this.showSummary(result.summary);
+                    this.showSuccess('AI总结生成成功');
+                    
+                } catch (error) {
+                    console.error('生成AI总结失败:', error);
+                    this.showError(error.message || '生成AI总结失败，请稍后重试');
+                } finally {
+                    this.showLoading(false);
+                }
+            }
+
+            showSummaryLoading() {
+                this.summarySection.style.display = 'block';
+                this.summaryContent.style.display = 'none';
+                this.summaryLoading.style.display = 'block';
+                this.summaryError.style.display = 'none';
+            }
+
+            showSummary(content) {
+                this.summarySection.style.display = 'block';
+                this.summaryLoading.style.display = 'none';
+                this.summaryError.style.display = 'none';
+                this.summaryContent.style.display = 'block';
+                this.summaryContent.innerHTML = `<p>${this.escapeHtml(content)}</p>`;
+            }
+
+            showSummaryError() {
+                this.summarySection.style.display = 'block';
+                this.summaryLoading.style.display = 'none';
+                this.summaryContent.style.display = 'none';
+                this.summaryError.style.display = 'block';
+            }
+
+            hideSummary() {
+                this.summarySection.style.display = 'none';
+            }
+
+            async exportTasks() {
+                const tasks = await this.getAllTasks();
+                const dataStr = JSON.stringify(tasks, null, 2);
+                const dataBlob= new Blob([dataStr], { type: 'application/json' });
+                
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(dataBlob);
+                link.download = `todolist-${new Date().toISOString().split('T')[0]}.json`;
+                link.click();
+                
+                this.showSuccess('任务已导出');
+            }
+
+            toggleTheme() {
+                const body = document.body;
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                body.setAttribute('data-theme', newTheme);
+                
+                // 更新按钮文本
+                this.themeToggle.textContent = newTheme === 'dark' ? '☀️ 切换亮色' : '🌙 切换暗色';
+                
+                // 保存主题偏好到本地存储
+                localStorage.setItem('theme', newTheme);
+            }
+
+            loadTheme() {
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                document.body.setAttribute('data-theme', savedTheme);
+                
+                this.themeToggle.textContent = savedTheme === 'dark' ? '☀️ 切换亮色' : '🌙 切换暗色';
+            }
+
+            showError(message) {
+                this.showNotification(message, 'error');
+            }
+
+            showSuccess(message) {
+                this.showNotification(message, 'success');
+            }
+
+            showNotification(message, type) {
+                // 创建通知元素
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+
+                // 添加到页面
+                document.body.appendChild(notification);
+
+                // 自动移除
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            getPriorityText(priority) {
+                const priorityMap = {
+                    'low': '低优先级',
+                    'medium': '中优先级',
+                    'high': '高优先级'
+                };
+                return priorityMap[priority] || priority;
+            }
+
+            showLoading(show) {
+                // 可以添加全局加载状态显示
+                if (show) {
+                    // 显示加载状态
+                } else {
+                    // 隐藏加载状态
+                }
+            }
+        }
+
+        // 初始化应用
+        document.addEventListener('DOMContentLoaded', () => {
+            new ToDoApp();
+        });
+    </script>
+</body>
+</html>

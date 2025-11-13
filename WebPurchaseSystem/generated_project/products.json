@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "苹果17",
+    "price": 5999.0,
+    "stock": 101,
+    "description": "苹果1",
+    "category": "电子产品"
+  },
+  {
+    "id": 2,
+    "name": "华为mate27",
+    "price": 5999.9,
+    "stock": 77,
+    "description": "测试python",
+    "category": "电子产品"
+  },
+  {
+    "id": 3,
+    "name": "123",
+    "price": 123.0,
+    "stock": 121,
+    "category": "电子产品",
+    "description": "123"
+  },
+  {
+    "id": 4,
+    "name": "123",
+    "price": 123.0,
+    "stock": 123,
+    "category": "电子产品",
+    "description": "123",
+    "created_at": "2025-10-18T22:21:37.683023"
+  },
+  {
+    "id": 5,
+    "name": "11",
+    "price": 11.0,
+    "stock": 7,
+    "category": "电子产品",
+    "description": "11",
+    "created_at": "2025-10-19T13:39:16.782696"
+  }
+]

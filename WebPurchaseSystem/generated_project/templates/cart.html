@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车 - 电商管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .cart-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .quantity-input {
+            width: 80px;
+            text-align: center;
+        }
+        .total-section {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+            display: none;
+        }
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="alert alert-success success-message" id="successMessage" role="alert">
+        操作成功！
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">电商管理系统</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="{{ url_for('index') }}">首页</a>
+                <a class="nav-link" href="{{ url_for('products') }}">商品列表</a>
+                <a class="nav-link active" href="{{ url_for('view_cart') }}">购物车</a>
+                <a class="nav-link" href="{{ url_for('orders') }}">我的订单</a>
+                <a class="nav-link" href="{{ url_for('profile') }}">个人资料</a>
+                <a class="nav-link" href="{{ url_for('logout') }}">退出</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>购物车</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if cart_items %}
+        <div class="row">
+            <div class="col-md-8">
+                {% for item in cart_items %}
+                <div class="cart-item" id="cart-item-{{ item.product.id }}">
+                    <div class="row align-items-center">
+                        <div class="col-md-3">
+                            <img src="https://via.placeholder.com/100" class="img-fluid" alt="{{ item.product.name }}">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <h5>{{ item.product.name }}</h5>
+                                    <p class="text-muted mb-1">单价: ¥{{ "%.2f"|format(item.product.price) }}</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity({{ item.product.id }}, -1)">-</button>
+                                        <input type="number" class="form-control quantity-input" id="quantity-{{ item.product.id }}" 
+                                               value="{{ item.quantity }}" min="1" max="{{ item.product.stock }}" 
+                                               onchange="updateQuantity({{ item.product.id }}, 0, this.value)">
+                                        <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity({{ item.product.id }}, 1)">+</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <h6 class="text-primary item-total" id="item-total-{{ item.product.id }}">
+                                        小计: ¥{{ "%.2f"|format(item.total_price) }}
+                                    </h6>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-danger btn-sm" onclick="removeFromCart({{ item.product.id }})">
+                                        删除
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-4">
+                <div class="total-section">
+                    <h4>订单汇总</h4>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>商品总数:</span>
+                        <span id="total-items">{{ cart_items|length }} 件</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>总金额:</span>
+                        <span class="h5 text-danger" id="total-price">¥{{ "%.2f"|format(total_price) }}</span>
+                    </div>
+                    
+                    <!-- 新增结算按钮 -->
+                    {% if cart_items %}
+                    <form method="POST" action="{{ url_for('checkout_cart') }}">
+                        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+                        <button type="submit" class="btn btn-success w-100 btn-lg">
+                            立即结算
+                        </button>
+                    </form>
+                    {% endif %}
+                    
+                    <a href="{{ url_for('products') }}" class="btn btn-outline-primary w-100 mt-2">
+                        继续购物
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="text-center py-5">
+            <h3 class="text-muted">购物车为空</h3>
+            <p class="text-muted">快去添加一些商品吧！</p>
+            <a href="{{ url_for('products') }}" class="btn btn-primary">去购物</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.textContent = message || '操作成功！';
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        function updateTotalPrice() {
+            // 重新计算总价（在实际应用中，这里应该从服务器获取最新数据）
+            // 这里简化处理，实际应该从服务器获取最新数据
+            location.reload();
+        }
+
+        function updateQuantity(productId, change, newValue = null) {
+            let quantityInput = document.getElementById('quantity-' + productId);
+            let currentQuantity = parseInt(quantityInput.value);
+            let maxStock = parseInt(quantityInput.max);
+            
+            // 显示加载状态
+            quantityInput.disabled = true;
+            document.getElementById('cart-item-' + productId).classList.add('loading');
+            
+            if (newValue !== null) {
+                currentQuantity = parseInt(newValue);
+            } else {
+                currentQuantity += change;
+            }
+            
+            // 边界检查
+            if (currentQuantity < 1) currentQuantity = 1;
+            if (currentQuantity > maxStock) {
+                currentQuantity = maxStock;
+                alert(`库存不足，最多只能购买 ${maxStock} 件`);
+            }
+            
+            quantityInput.value = currentQuantity;
+            
+            // 发送更新请求
+            fetch('/cart/update/' + productId, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    quantity: currentQuantity,
+                    csrf_token: '{{ session.csrf_token }}'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                quantityInput.disabled = false;
+                document.getElementById('cart-item-' + productId).classList.remove('loading');
+                
+                if (!data.success) {
+                    alert('更新失败: ' + (data.error || '未知错误'));
+                    // 恢复原值
+                    location.reload();
+                } else {
+                    if (data.action === 'remove') {
+                        // 商品被移除，刷新页面
+                        location.reload();
+                    } else {
+                        // 成功更新，只更新总价显示，不刷新页面
+                        updateTotalPrice();
+                        showSuccessMessage('数量更新成功');
+                    }
+                }
+            })
+            .catch(error => {
+                quantityInput.disabled = false;
+                document.getElementById('cart-item-' + productId).classList.remove('loading');
+                console.error('Error:', error);
+                alert('更新失败，请稍后重试');
+                location.reload();
+            });
+        }
+        
+        function removeFromCart(productId) {
+            if (confirm('确定要从购物车中删除这个商品吗？')) {
+                // 显示加载状态
+                document.getElementById('cart-item-' + productId).classList.add('loading');
+                
+                fetch('/cart/remove/' + productId, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        csrf_token: '{{ session.csrf_token }}'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showSuccessMessage('商品已从购物车移除');
+                        // 移除商品元素
+                        const cartItem = document.getElementById('cart-item-' + productId);
+                        cartItem.style.opacity = '0';
+                        setTimeout(() => {
+                            cartItem.remove();
+                            updateTotalPrice();
+                        }, 500);
+                    } else {
+                        document.getElementById('cart-item-' + productId).classList.remove('loading');
+                        alert('删除失败: ' + (data.error || '未知错误'));
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('cart-item-' + productId).classList.remove('loading');
+                    console.error('Error:', error);
+                    alert('删除失败，请稍后重试');
+                });
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<!-- 文件结束，勿再生成 -->

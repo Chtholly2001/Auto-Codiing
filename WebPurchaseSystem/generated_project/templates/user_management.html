@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .admin-badge {
+            background-color: #dc3545;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        .user-badge {
+            background-color: #6c757d;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">电商管理系统</a>
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text me-3">
+                    欢迎，{{ session.username }}
+                    {% if session.role == 'admin' %}
+                        <span class="admin-badge ms-2">管理员</span>
+                    {% else %}
+                        <span class="user-badge ms-2">用户</span>
+                    {% endif %}
+                </span>
+                <a class="nav-link" href="{{ url_for('products') }}">商品管理</a>
+
+                {% if session.role == 'admin' %}
+                <a class="nav-link active" href="{{ url_for('user_management') }}">用户管理</a>
+                {% endif %}
+                <a class="nav-link" href="{{ url_for('logout') }}">退出</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>用户管理</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">用户列表</h5>
+            </div>
+            <div class="card-body">
+                {% if users %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>用户名</th>
+                                <th>角色</th>
+                                <th>余额</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>
+                                    {% if user.role == 'admin' %}
+                                        <span class="admin-badge">管理员</span>
+                                    {% else %}
+                                        <span class="user-badge">用户</span>
+                                    {% endif %}
+                                </td>
+                                <td>¥{{ "%.2f"|format(user.balance) }}</td>
+                                <td>
+                                    {% if user.id != session.user_id %}
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                            修改角色
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="updateRole({{ user.id }}, 'admin')">设为管理员</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateRole({{ user.id }}, 'user')">设为用户</a></li>
+                                        </ul>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteUser({{ user.id }}, '{{ user.username }}')">
+                                            删除
+                                        </button>
+                                    </div>
+                                    {% else %}
+                                    <span class="text-muted">当前用户</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="text-muted">暂无用户数据</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function deleteUser(userId, username) {
+            if (confirm(`确定要删除用户 "${username}" 吗？此操作不可撤销！`)) {
+                fetch(`/api/users/${userId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('用户删除成功');
+                        location.reload();
+                    } else {
+                        alert('删除失败: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('删除失败');
+                });
+            }
+        }
+
+        function updateRole(userId, newRole) {
+            const roleName = newRole === 'admin' ? '管理员' : '用户';
+            if (confirm(`确定要将该用户角色修改为 "${roleName}" 吗？`)) {
+                fetch(`/api/users/${userId}/role`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ role: newRole })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('角色修改成功');
+                        location.reload();
+                    } else {
+                        alert('修改失败: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('修改失败');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
